@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +19,7 @@ public class Category {
 	private String name;
 	private String description;
 	
-	@ManyToMany(mappedBy = "categories")
+	@ManyToMany(mappedBy = "categories",fetch = FetchType.EAGER)
 	private Set<Recipe> recipes = new HashSet<>();
 	
 	public Category() {}

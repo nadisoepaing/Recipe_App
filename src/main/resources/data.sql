@@ -10,3 +10,4 @@ insert into uom (id,name,description) values('2','gram','This is gram unit');
 insert into uom (id,name,description) values('3','cup','This is cup unit');
 insert into uom (id,name,description) values('4','teaspoon','This is teaspoon unit');
 insert into uom (id,name,description) values('5','tablespoon','This is tablespoon unit');
+insert into uom (id,name,description) values('6','piece','This is piece unit');

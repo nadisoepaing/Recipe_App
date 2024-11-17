@@ -1,14 +1,13 @@
 package com.hostmdy.recipe.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.engine.jdbc.env.internal.LobCreationLogging;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +29,9 @@ public class Recipe {
 	private Long id;
 	
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	private Difficulty difficulty;
 	
 	@Lob
 	private String description;
@@ -54,7 +56,7 @@ public class Recipe {
 	private Set<Category> categories = new HashSet<>();
 	
 	@OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Direction> directonSet = new HashSet<>();
+	private Set<Direction> directons = new HashSet<>();
 	
 	@OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY,cascade = CascadeType.ALL) 
 	private Set<Ingredient> ingredients = new HashSet<>();
@@ -167,12 +169,12 @@ public class Recipe {
 		this.categories = categories;
 	}
 
-	public Set<Direction> getDirectonSet() {
-		return directonSet;
+	public Set<Direction> getDirectons() {
+		return directons;
 	}
 
-	public void setDirectonSet(Set<Direction> directonSet) {
-		this.directonSet = directonSet;
+	public void setDirectons(Set<Direction> directons) {
+		this.directons = directons;
 	}
 
 	public Set<Ingredient> getIngredients() {
@@ -199,6 +201,15 @@ public class Recipe {
 		this.updatedAt = updatedAt;
 	}
 
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
+	}
+
+	
 	
 	
 

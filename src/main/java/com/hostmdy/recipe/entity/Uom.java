@@ -20,7 +20,7 @@ public class Uom {
 	private String description;
 	
 	
-	@OneToMany(mappedBy = "uom",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "uom",fetch = FetchType.EAGER)
 	private Set<Ingredient> ingredients = new HashSet<>();
 	
 	public Uom() {}

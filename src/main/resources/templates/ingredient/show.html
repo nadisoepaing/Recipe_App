@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ingredients</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+<body>
+
+   <div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h1 class="card-title mb-0">My Ingredients!</h1>
+        </div>
+        <div class="card-body">
+			<a href="#" th:href="@{'/ingredient/new/' + ${recipeId}}" class="btn btn-primary">Create Ingredient</a>
+          <div class="table-responsive" th:if="${not #lists.isEmpty(ingredients)}">
+            <table class="table table-hover">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Unit</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="ingredient : ${ingredients}">
+                  <td th:text="${ingredient.id}"></td>
+                  <td th:text="${ingredient.description}"></td>
+                  <td th:text="${ingredient.amount}"></td>
+                  <td th:text="${ingredient.unitOfMeasurement.name}"></td>
+                  <td><a href="#" th:href="@{'/ingredient/update/' + ${ingredient.id}}" class="btn btn-primary">Update</a></td>
+                  <td><a href="#" th:href="@{'/ingredient/delete/'+ ${recipeId}+ @{'/'} + ${ingredient.id}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+</html>

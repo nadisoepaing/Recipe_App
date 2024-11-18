@@ -56,7 +56,7 @@ public class Recipe {
 	private Set<Category> categories = new HashSet<>();
 	
 	@OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Direction> directons = new HashSet<>();
+	private Set<Direction> directions = new HashSet<>();
 	
 	@OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY,cascade = CascadeType.ALL) 
 	private Set<Ingredient> ingredients = new HashSet<>();
@@ -169,12 +169,12 @@ public class Recipe {
 		this.categories = categories;
 	}
 
-	public Set<Direction> getDirectons() {
-		return directons;
+	public Set<Direction> getDirections() {
+		return directions;
 	}
 
-	public void setDirectons(Set<Direction> directons) {
-		this.directons = directons;
+	public void setDirections(Set<Direction> directions) {
+		this.directions = directions;
 	}
 
 	public Set<Ingredient> getIngredients() {

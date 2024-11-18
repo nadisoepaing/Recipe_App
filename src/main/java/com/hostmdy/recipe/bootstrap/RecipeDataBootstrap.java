@@ -159,12 +159,12 @@ public class RecipeDataBootstrap implements ApplicationListener<ContextRefreshed
 		Direction step5 = new Direction("Add 1/2 of chopped green onions.", 5, recipe);
 		Direction step6 = new Direction("Serve over hot cooked rice; garnish with sesame seeds and remaining green onions.", 6, recipe);
 		
-		recipe.getDirectons().add(step1);
-		recipe.getDirectons().add(step2);
-		recipe.getDirectons().add(step3);
-		recipe.getDirectons().add(step4);
-		recipe.getDirectons().add(step5);
-		recipe.getDirectons().add(step6);
+		recipe.getDirections().add(step1);
+		recipe.getDirections().add(step2);
+		recipe.getDirections().add(step3);
+		recipe.getDirections().add(step4);
+		recipe.getDirections().add(step5);
+		recipe.getDirections().add(step6);
 		
 		
 		List<Recipe> recipes = new ArrayList<>();

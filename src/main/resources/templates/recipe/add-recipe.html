@@ -11,9 +11,9 @@
 
 <body>
 	<div class="container-fluid" style="margin-top: 20px">
-		<div class="row">
+		<div class="row mb-3">
 			<div class="col-md-6 offset-md-3">
-				<form th:object="${recipe}" th:action="@{/recipe/new}" method="post">
+				<form th:object="${recipe}" th:action="@{/recipe/create}" method="post">
 					<input type="hidden" th:field="*{id}">
 					<div class="accordion" id="accordionExample">
 						<div class="accordion-item">
@@ -41,77 +41,73 @@
 										</div>
 										<div class="col-md-9">
 											<div class="form-check" th:each="category : ${categories}">
-												<input class="form-check-input" type="checkbox" name="categoryNames" th:value="${category.name}">
+												<input class="form-check-input"
+												 type="checkbox" 
+												 name="categoryNames"
+												  th:value="${category.name}"
+												  th:checked="${#lists.contains(relatedCategoryName,category.name)}"
+												  >
 												<label class="form-check-label" th:for="${category.id}" th:text="${category.name}"></label>
 											</div>
 										</div>
 									</div>
 									<div class="row mb-3">
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<label for="prepTime" class="form-label">Prep Time:</label>
 											<input type="text" class="form-control" id="prepTime"
 												th:field="*{prepTime}">
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<label for="cookTime" class="form-label">Cooktime:</label>
 											<input type="text" class="form-control" id="cookTime"
 												th:field="*{cookTime}">
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<label for="difficulty" class="form-label">Difficulty:</label>
 											<select class="form-select" id="difficulty" th:field="*{difficulty}">
 												<option
-													th:each="difficultyValue : ${T(com.hostmdy.recipe.domain.Difficulty).values()}"
+													th:each="difficultyValue : ${T(com.hostmdy.recipe.entity.Difficulty).values()}"
 													th:value="${difficultyValue.name()}"
 													th:text="${difficultyValue.name()}">val
 												</option>
 											</select>
 											<select class="form-select" th:remove="all">
-												<option>Easy</option>
-												<option>Medium</option>
-												<option>Hard</option>
+												
 											</select>
 										</div>
 									</div>
 									<div class="row mb-3">
-										<div class="col-md-3">
+										<div class="col-md-12">
 											<label for="servings" class="form-label">Servings</label>
 											<input type="text" class="form-control" id="servings"
 												th:field="*{servings}">
 										</div>
 									</div>
 
+								
 									<div class="row mb-3">
-										<div class="col-md-3">
-											<label for="directions" class="form-label">Directions</label>
-											<input type="text" class="form-control" id="directions"
-												th:field="*{directions}">
-										</div>
-									</div>
-
-									<div class="row mb-3">
-										<div class="col-md-3">
+										<div class="col-md-12">
 											<label for="title" class="form-label">Name</label>
 											<input type="text" class="form-control" id="title" th:field="*{name}">
 										</div>
 									</div>
 
 									<div class="row mb-3">
-										<div class="col-md-3">
+										<div class="col-md-12">
 											<label for="source" class="form-label">Source</label>
 											<input type="text" class="form-control" id="source" th:field="*{source}">
 										</div>
 									</div>
 
 									<div class="row mb-3">
-										<div class="col-md-3">
+										<div class="col-md-12">
 											<label for="note" class="form-label">Note</label>
 											<input type="text" class="form-control" id="note"
-												th:field="*{note.recipeNote}">
+												th:field="*{note.description}">
 										</div>
 									</div>
 									
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" class="btn btn-primary">create</button>
 								</div>
 							</div>
 

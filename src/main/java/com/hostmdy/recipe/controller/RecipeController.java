@@ -68,6 +68,7 @@ public class RecipeController {
 		List<Category> categories = categoryService.getAllCategories();
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("categories", categories);
+		model.addAttribute("relatedCategoryNames","sample");
 		return "recipe/add-recipe";
 	}
 
@@ -94,12 +95,31 @@ public class RecipeController {
 		}
 		List<Category> categories = categoryService.getAllCategories();
 		Recipe recipe = recipeOptional.get();
-		List<String> relatedCategoryName = recipe.getCategories().stream()
+		List<String> relatedCategoryNames = recipe.getCategories().stream()
 				.map(c -> c.getName()).toList();
 		model.addAttribute("recipe",recipe);
 		model.addAttribute("categories", categories);
-		model.addAttribute("relatedCategoryName",relatedCategoryName);
+		model.addAttribute("relatedCategoryNames",relatedCategoryNames);
 		return "recipe/add-recipe";
+	}
+	
+	@GetMapping("/delete/{recipeId}")
+	public String delete(@PathVariable Long recipeId) {
+		recipeService.deleteRecipeById(recipeId);
+		return "redirect:/recipe/all";
+	}
+	
+	@GetMapping("/{recipeId}/ingredients")
+	public String allIngredients(@PathVariable Long recipeId, Model model) {
+		Optional<Recipe> recipeOptional = recipeService.getRecipeById(recipeId);
+		if(recipeOptional.isEmpty()) {
+			throw new RuntimeException("recipe is not found");
+		}
+		List<Ingredient> ingredients = recipeOptional.get().getIngredients().stream()
+				.sorted((i1,i2)-> i1.getSequence()> i2.getSequence()? 1:-1)
+				.toList();
+		model.addAttribute("ingredients",ingredients);
+		return "ingredient/ingredient-list";
 	}
 
 }

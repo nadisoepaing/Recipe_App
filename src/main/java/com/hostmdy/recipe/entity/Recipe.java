@@ -46,7 +46,7 @@ public class Recipe {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "note_id")
 	private Note note;
 	

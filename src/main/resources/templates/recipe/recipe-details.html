@@ -117,7 +117,7 @@
 								<ul class="list-group">
 									<li th:each="ingredient : ${ingredients}" class="list-group-item">
 										<span
-											th:text="${(ingredient.getAmount() + ' ' + ingredient.uom.getName() + ' - ' + ingredient.getDescription())}"></span>
+											th:text="${(ingredient.amount + ' ' + ingredient.uom.name() + ' - ' + ingredient.description)}"></span>
 									</li>
 								</ul>
 							</div>

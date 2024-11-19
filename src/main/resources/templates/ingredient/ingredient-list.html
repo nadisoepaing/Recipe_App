@@ -22,7 +22,7 @@
             <table class="table table-hover">
               <thead class="table-dark">
                 <tr>
-                  <th>ID</th>
+                  <th>No</th>
                   <th>Description</th>
                   <th>Amount</th>
                   <th>Unit</th>
@@ -32,12 +32,12 @@
               </thead>
               <tbody>
                 <tr th:each="ingredient : ${ingredients}">
-                  <td th:text="${ingredient.id}"></td>
+                  <td th:text="${ingredient.sequence}"></td>
                   <td th:text="${ingredient.description}"></td>
                   <td th:text="${ingredient.amount}"></td>
-                  <td th:text="${ingredient.unitOfMeasurement.name}"></td>
-                  <td><a href="#" th:href="@{'/ingredient/update/' + ${ingredient.id}}" class="btn btn-primary">Update</a></td>
-                  <td><a href="#" th:href="@{'/ingredient/delete/'+ ${recipeId}+ @{'/'} + ${ingredient.id}}" class="btn btn-danger">Delete</a></td>
+                  <td th:text="${ingredient.uom.name}"></td>
+                  <td><a href="#" th:href="@{'/ingredient/' + ${ingredient.id}+'/update/'+${recipeId}}" class="btn btn-primary">Update</a></td>
+                  <td><a href="#" th:href="@{'/ingredient/' + ${ingredient.id}+'/delete/'+${recipeId}}" class="btn btn-danger">Delete</a></td>
                 </tr>
               </tbody>
             </table>

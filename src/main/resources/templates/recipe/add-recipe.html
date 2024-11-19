@@ -45,7 +45,7 @@
 												 type="checkbox" 
 												 name="categoryNames"
 												  th:value="${category.name}"
-												  th:checked="${#lists.contains(relatedCategoryName,category.name)}"
+												  th:checked="${#lists.contains(relatedCategoryNames,category.name)}"
 												  >
 												<label class="form-check-label" th:for="${category.id}" th:text="${category.name}"></label>
 											</div>

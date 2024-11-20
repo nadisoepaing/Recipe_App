@@ -26,7 +26,8 @@
 
 								<div class="col-md-6">
 									<a class="btn btn-secondary" href="#"
-										th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
+										th:href="@{'/image/recipe/' + ${recipeId}+'/upload'}" role="button">Change
+										Image</a>
 								</div>
 							</h2>
 						</div>
@@ -45,12 +46,10 @@
 										</ul>
 									</div>
 									<div class="col-md-6">
-										<img src="https://www.allrecipes.com/thmb/u00MS7wFT3Ot0U7mQO_1SsXbvQc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/AR-26809-Easy-Korean-Ground-Beef-ddmfs-4x3-15244bb0dbae49e78ca6d34e34428786.jpg"
-											width="200" height="200">
-										<!--
-                   <img th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
-                        width="200" height="200">
-						-->
+
+										<img th:src="@{'/image/recipe/' + ${recipe.id} }" width="200"
+											height="200">
+
 									</div>
 								</div>
 								<div class="row">

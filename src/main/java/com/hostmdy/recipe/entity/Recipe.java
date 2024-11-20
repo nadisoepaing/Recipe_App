@@ -42,6 +42,8 @@ public class Recipe {
 	private Integer totalTime;
 	private Integer servings;
 	private String source;
+	
+	@Lob
 	private byte[] image;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;

@@ -23,7 +23,8 @@
             <div class="accordion-body">
               <div class="row">
                 <div class="col-md-5">
-                  <form action="http:\\localhost" method="post" enctype="multipart/form-data" th:action="@{'/recipe/' + ${recipeId} + '/image'}">
+                  <form method="post" enctype="multipart/form-data" th:action="@{'/image/recipe/upload'}">
+					<input type="hidden" name="recipeId" th:value="${recipeId}" />
                     <label class="form-label">Select File</label>
                     <input id="imagefile" name="imagefile" type="file" class="form-control">
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>

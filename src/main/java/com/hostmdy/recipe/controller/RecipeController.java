@@ -121,5 +121,18 @@ public class RecipeController {
 		model.addAttribute("ingredients",ingredients);
 		return "ingredient/ingredient-list";
 	}
+	
+	@GetMapping("/{recipeId}/directions")
+	public String allDirection(@PathVariable Long recipeId, Model model) {
+		Optional<Recipe> recipeOptional = recipeService.getRecipeById(recipeId);
+		if(recipeOptional.isEmpty()) {
+			throw new RuntimeException("recipe is not found");
+		}
+		List<Direction> directions = recipeOptional.get().getDirections().stream()
+				.sorted((d1,d2)-> d1.getSequence()> d2.getSequence()? 1:-1)
+				.toList();
+		model.addAttribute("directions",directions);
+		return "direction/direction-list";
+	}
 
 }

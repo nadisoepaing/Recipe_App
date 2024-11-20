@@ -2,6 +2,7 @@ package com.hostmdy.recipe.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,7 +29,7 @@ public class Direction {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
 	@JoinColumn(name = "recipe_id")
 	private Recipe recipe;
 	

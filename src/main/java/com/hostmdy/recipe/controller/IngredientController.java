@@ -42,8 +42,10 @@ public class IngredientController {
 	
 	@PostMapping("/new")
 	public String createNew(@ModelAttribute Ingredient ingredient,@RequestParam Long recipeId,@RequestParam Long uomId) {
+		
 		Ingredient savedIngredient = ingredientService.createIngredient(ingredient, recipeId, uomId);
 		System.out.println("### ingredient with id = "+savedIngredient.getId()+" is created ###");
+		
 		return "redirect:/recipe/"+recipeId+"/ingredients";
 	}
 	
@@ -59,6 +61,12 @@ public class IngredientController {
 		model.addAttribute("ingredient",ingredient);
 		model.addAttribute("recipeId",recipeId);
 		return "ingredient/ingredient-form";
+	}
+	
+	@GetMapping("/{ingredientId}/delete/{recipeId}")
+	public String delete(@PathVariable Long ingredientId,@PathVariable Long recipeId) {
+		ingredientService.deleteIngredientById(ingredientId);
+		return "redirect:/recipe/"+recipeId+"/ingredients";
 	}
 	
 }

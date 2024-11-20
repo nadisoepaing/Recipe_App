@@ -53,13 +53,13 @@ public class IngredientServiceImpl implements IngredientService{
 		
 		// recipe - ingredient
 		ingredient.setRecipe(recipe);
-		recipe.getIngredients().add(ingredient);
-		recipeRepository.save(recipe);
+
 		
 		// uom - ingredient
+		if(ingredient.getId() == null) {
 		ingredient.setRecipe(recipe);
 		uom.getIngredients().add(ingredient);
-		uomRepository.save(uom);
+		}
 		
 		return saveIngredient(ingredient);
 	}
